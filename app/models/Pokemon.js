@@ -19,8 +19,9 @@ export class Pokemon {
     get ActivePokemon() {
         console.log(this.img)
         return `
+        <div class="sticky-top border border-dark rounded p-3 m-3">
         <div class="row text-center">
-            <h3>${this.name}</h3>
+            <h3>${this.name}<hr/></h3>
         </div>
         <div class="row justify-content-center">
         <img class="pokemon-img" src="${this.img}" alt="${this.img}">
@@ -32,11 +33,13 @@ export class Pokemon {
             <div class="col-6">
                 <p>Types: ${this.types[0].type.name} ${this.types[1] ? '| ' + this.types[1].type.name : ''}</p>
             </div>
+            <hr/>
         </div>
         <div class="row justify-content-end">
             <div class="col-2">
                 <button class="btn btn-rounded btn-success">Catch</button>
             </div>
+        </div>
         </div>
         `
     }
