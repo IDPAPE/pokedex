@@ -3,7 +3,7 @@
 export class Pokemon {
     constructor(data) {
         this.name = data.name
-        this.img = data.forms[0].url
+        this.img = data.sprites.front_default
         this.weight = data.weight
         this.height = data.height
         this.types = data.types
@@ -17,19 +17,20 @@ export class Pokemon {
     }
 
     get ActivePokemon() {
+        console.log(this.img)
         return `
-        <div class="row">
+        <div class="row text-center">
             <h3>${this.name}</h3>
         </div>
-        <div class="row">
-        <img src="${this.img}" alt="">
+        <div class="row justify-content-center">
+        <img class="pokemon-img" src="${this.img}" alt="${this.img}">
         </div>
         <div class="row">
             <div class="col-6">
-                <p>Height: 4'03" | Weight: 98 lbs</p>
+                <p>Height: ${this.height}' | Weight: ${this.weight} lbs</p>
             </div>
             <div class="col-6">
-                <p>Types: Water | Poison</p>
+                <p>Types: ${this.types[0].type.name} ${this.types[1] ? '| ' + this.types[1].type.name : ''}</p>
             </div>
         </div>
         <div class="row justify-content-end">
