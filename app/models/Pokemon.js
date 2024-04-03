@@ -3,7 +3,7 @@
 export class Pokemon {
     constructor(data) {
         this.name = data.name
-        this.img = data.sprites.front_default
+        this.img = data.img ? data.img : data.sprites.front_default
         this.weight = data.weight
         this.height = data.height
         this.types = data.types
@@ -17,7 +17,6 @@ export class Pokemon {
     }
 
     get ActivePokemon() {
-        console.log(this.img)
         return `
         <div class="sticky-top border border-dark rounded p-3 m-3">
         <div class="row text-center">
@@ -37,10 +36,18 @@ export class Pokemon {
         </div>
         <div class="row justify-content-end">
             <div class="col-2">
-                <button class="btn btn-rounded btn-success">Catch</button>
+                <button class="btn btn-rounded btn-success" onclick="app.SandboxPokemonsController.catchPokemon()">Catch</button>
             </div>
         </div>
         </div>
+        `
+    }
+
+    get MyPokemon() {
+        return `
+        <p class="border-bottom border-dark"><img
+                        src="${this.img}" alt="">
+                    ${this.name}<button onclick="app.SandboxPokemonsController.releasePokemon(${this.name})">release</button></p>
         `
     }
 }
